@@ -33,9 +33,8 @@ public class Cliente {
     @NotBlank
     private String email;
     @Size(min = 10, max = 13)
-    private int telefone;
+    private String telefone;
     @NotNull
-    @NotBlank
     private LocalDate dataNascimento;
     private LocalDateTime dataHoraCadastro;
     private LocalDateTime dataHoraAtualizacao;
