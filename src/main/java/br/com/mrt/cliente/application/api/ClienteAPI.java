@@ -12,5 +12,7 @@ public interface ClienteAPI {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    ClienteResponse postCadastraNovoCliente(@RequestBody @Valid ClienteRequest clienteRequest);
+    ClienteResponse postCadastraNovoCliente(ClienteRequest clienteRequest);
+
+
 }
