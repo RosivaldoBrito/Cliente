@@ -1,5 +1,6 @@
 package br.com.mrt.cliente.domain;
 
+import br.com.mrt.cliente.application.api.ClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,13 +34,20 @@ public class Cliente {
     @NotBlank
     private String email;
     @Size(min = 10, max = 13)
-    private int telefone;
+    private String telefone;
     @NotNull
-    @NotBlank
     private LocalDate dataNascimento;
     private LocalDateTime dataHoraCadastro;
     private LocalDateTime dataHoraAtualizacao;
     private boolean ativo = true;
 
 
+    public Cliente(ClienteRequest clienteRequest) {
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.cpf = clienteRequest.getCpf();
+        this.email = clienteRequest.getEmail();
+        this.telefone = clienteRequest.getTelefone();
+        this.dataNascimento = clienteRequest.getDataNascimento();
+        this.dataHoraCadastro = LocalDateTime.now();
+    }
 }
