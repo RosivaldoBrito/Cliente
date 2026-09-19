@@ -24,7 +24,5 @@ public class ClienteApplicationService implements ClienteService {
 
     }
 
-    public String test(){
-        return  "oi";
-    }
+
 }

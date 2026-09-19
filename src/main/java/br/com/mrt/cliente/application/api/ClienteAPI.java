@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/cliente")
 public interface ClienteAPI {
 
@@ -11,7 +13,7 @@ public interface ClienteAPI {
     @ResponseStatus(HttpStatus.CREATED)
     ClienteResponse postCadastraNovoCliente(@RequestBody @Valid ClienteRequest clienteRequest);
 
-    @GetMapping
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     List<ClienteListResponse> getListaTodosClientes();
 
