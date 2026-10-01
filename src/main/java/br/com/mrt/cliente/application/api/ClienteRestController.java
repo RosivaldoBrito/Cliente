@@ -38,6 +38,6 @@ public class ClienteRestController implements ClienteAPI {
         log.info("[inicia] ClienteRestController - getBuscaClientePorID");
         ClienteDetalhadoResponse detalhado = clienteService.buscaClientePorId(idCliente);
         log.info("[finalizado] ClienteRestController - getBuscaClientePorID");
-        return null;
+        return detalhado;
     }
 }

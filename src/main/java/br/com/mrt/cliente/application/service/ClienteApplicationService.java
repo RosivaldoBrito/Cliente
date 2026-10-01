@@ -43,7 +43,7 @@ public class ClienteApplicationService implements ClienteService {
         Cliente cliente = clienteRepository.buscaPorId(idCliente);
         log.info("[finaliza] ClienteApplicationService - buscaClientePorID  ");
 
-        return null;
+        return new ClienteDetalhadoResponse(cliente);
     }
 
 
