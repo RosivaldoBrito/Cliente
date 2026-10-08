@@ -22,13 +22,13 @@ public class ClienteRequest {
     private String cpf;
     @NotNull
     @NotBlank
-    private String email;
+        private String email;
     @Size(min = 10, max = 13)
-    private String telefone;
+        private String telefone;
     @NotNull
     private Sexo sexo;
     @NotNull
-    private String celular;
+        private String celular;
     @NotNull
     private LocalDate dataNascimento;
 
