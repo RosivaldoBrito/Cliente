@@ -1,5 +1,6 @@
 package br.com.mrt.cliente.domain;
 
+import br.com.mrt.cliente.application.api.ClienteAlteradoRequest;
 import br.com.mrt.cliente.application.api.ClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -55,5 +56,12 @@ public class Cliente {
         this.dataHoraCadastro = LocalDateTime.now();
         this.celular = clienteRequest.getCelular();
         this.sexo = clienteRequest.getSexo();
+    }
+
+    public void alteraCliente(ClienteAlteradoRequest clienteAlteradoRequest) {
+        this.email = clienteAlteradoRequest.getEmail();
+        this.telefone = clienteAlteradoRequest.getTelefone();
+        this.celular = clienteAlteradoRequest.getCelular();
+
     }
 }
