@@ -11,4 +11,6 @@ public interface ClienteRepository {
     List<Cliente> buscaTodosClientes();
 
     Cliente buscaPorId(UUID idCliente);
+
+    void deletaPorID(UUID idCliente);
 }
