@@ -1,0 +1,33 @@
+[1mdiff --git a/src/main/java/br/com/mrt/cliente/application/api/ClienteRequest.java b/src/main/java/br/com/mrt/cliente/application/api/ClienteRequest.java[m
+[1mindex 83eec21..8ea3479 100644[m
+[1m--- a/src/main/java/br/com/mrt/cliente/application/api/ClienteRequest.java[m
+[1m+++ b/src/main/java/br/com/mrt/cliente/application/api/ClienteRequest.java[m
+[36m@@ -22,13 +22,13 @@[m [mpublic class ClienteRequest {[m
+     private String cpf;[m
+     @NotNull[m
+     @NotBlank[m
+[31m-    private String email;[m
+[32m+[m[32m        private String email;[m
+     @Size(min = 10, max = 13)[m
+[31m-    private String telefone;[m
+[32m+[m[32m        private String telefone;[m
+     @NotNull[m
+     private Sexo sexo;[m
+     @NotNull[m
+[31m-    private String celular;[m
+[32m+[m[32m        private String celular;[m
+     @NotNull[m
+     private LocalDate dataNascimento;[m
+ [m
+[1mdiff --git a/src/main/java/br/com/mrt/cliente/application/service/ClienteApplicationService.java b/src/main/java/br/com/mrt/cliente/application/service/ClienteApplicationService.java[m
+[1mindex 50f1ece..58883f7 100644[m
+[1m--- a/src/main/java/br/com/mrt/cliente/application/service/ClienteApplicationService.java[m
+[1m+++ b/src/main/java/br/com/mrt/cliente/application/service/ClienteApplicationService.java[m
+[36m@@ -48,6 +48,7 @@[m [mpublic class ClienteApplicationService implements ClienteService {[m
+         log.info("[inicia] ClienteApplicationService - alteraDadosCliente ");[m
+         Cliente cliente = clienteRepository.buscaPorId(idCliente);[m
+         cliente.alteraCliente(clienteAlteradoRequest);[m
+[32m+[m[32m        clienteRepository.salva(cliente);[m
+         log.info("[finaliza] ClienteApplicationService - alteraDadosCliente ");[m
+     }[m
+ [m

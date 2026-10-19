@@ -1,8 +1,6 @@
 package br.com.mrt.cliente.application.service;
 
-import br.com.mrt.cliente.application.api.ClienteListResponse;
-import br.com.mrt.cliente.application.api.ClienteRequest;
-import br.com.mrt.cliente.application.api.ClienteResponse;
+import br.com.mrt.cliente.application.api.*;
 import br.com.mrt.cliente.application.repository.ClienteRepository;
 import br.com.mrt.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +32,32 @@ public class ClienteApplicationService implements ClienteService {
         List<Cliente> clientes = clienteRepository.buscaTodosClientes();
         log.info("[finaliza] ClienteApplicationService - listaTodosClientes  ");
         return ClienteListResponse.converte(clientes);
+    }
+
+    @Override
+    public ClienteDetalhadoResponse buscaClientePorId(UUID idCliente) {
+        log.info("[inicia] ClienteApplicationService - buscaClientePorID  ");
+        Cliente cliente = clienteRepository.buscaPorId(idCliente);
+        log.info("[finaliza] ClienteApplicationService - buscaClientePorID  ");
+
+        return new ClienteDetalhadoResponse(cliente);
+    }
+
+    @Override
+    public void alteraDadosCliente(UUID idCliente, ClienteAlteradoRequest clienteAlteradoRequest) {
+        log.info("[inicia] ClienteApplicationService - alteraDadosCliente ");
+        Cliente cliente = clienteRepository.buscaPorId(idCliente);
+        cliente.alteraCliente(clienteAlteradoRequest);
+        clienteRepository.salva(cliente);
+        log.info("[finaliza] ClienteApplicationService - alteraDadosCliente ");
+    }
+
+    @Override
+    public void deletaClientePorId(UUID idCliente) {
+        log.info("[inicia] ClienteApplicationService - deletaClientePorID ");
+        clienteRepository.buscaPorId(idCliente);
+        clienteRepository.deletaPorID(idCliente);
+        log.info("[finaliza] ClienteApplicationService - deletaClientePorID ");
     }
 
 
